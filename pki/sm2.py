@@ -58,7 +58,7 @@ def modular_power(a, n, p):
         return a % p * modular_power(temp, n // 2, p) % p
     else:
         return (modular_power(temp, n // 2, p)) % p
-    原文：https://blog.csdn.net/qq_36921652/article/details/79368299
+
     """
     return pow(a, n, p)
 
@@ -393,20 +393,31 @@ def generate_keypair(len_param=64):
 
 if __name__ == '__main__':
     # print(generate_keypair(64))
-    pk, sk = generate_keypair()
-    print(sk.hex())
-    print(pk.hex())
+    # pk, sk = generate_keypair()
+    # print(sk)
+    # print(pk.hex())
     len_para = 64
 
-    sig = Sign("你好", sk, '12345678abcdef', len_para)
+    # sig = Sign("hello", sk, '12345678abcdef', len_para)
+    sk = 'd94870929fb991512dc6c9dda9d2e21de3be95f273546bdf6c7d5c8d52ee10a1'
+    bytesSk = bytes.fromhex(sk)
+    print(bytesSk)
+    pk = '5bdd559a1d2fcdc6c638125e12677b296b81cac5f4d0d3e628af3aab2f11ee328e8cc83c2835696089976bd1f28d8b7946088dc5be3a9674869bafd1cdd082a7'
+    bytesPk = bytes.fromhex(pk)
+    sig = Sign('hello', bytesSk, '12345678abcdef', len_para)
     print(sig.hex())
-    resSig = Verify(sig, "你好", pk, len_para)
+    # resSig = Verify(sig, "hello", pk, len_para)
+    resSig = Verify(sig, "hello", bytesPk, len_para)
     print(resSig,type(resSig))
 
     e = b'hello'
 
-    C = Encrypt(e, pk, len_para, 0)
-    print(C.hex())
-    m = Decrypt(C, sk, len_para)
+    # C = Encrypt(e, pk, len_para, 0)
+    # C = Encrypt(e, bytesPk, len_para, 0)
+    C = '579550ad8545de36237682d27d04595a4598b827770609d924386c5eb208911213554dc4d39ab6fbd37dcbd0959e9029095e1753ecbf96b36c59e8be088d9989a14e74ac63dbccf735b6033e0a3766ea262d1067c0e76f11cef8c50f8e1ccd222148508b34'
+    bytesC = bytes.fromhex(C)
+    # print(C.hex())
+    # m = Decrypt(C, sk, len_para)
+    m = Decrypt(C, bytesSk, len_para)
 
-    print(m.hex())
+    print(m)
