@@ -109,6 +109,75 @@ class RadixTree:
 
         return False
 
+
+    def searchPrefix(self, x, k):
+        """
+        模糊查询
+        :param x:
+        :param k:
+        :return:
+        """
+        if k == '':
+            return x.leafOrNot()
+
+
+        for a in getAllStrings(k):
+            key = '.'.join(a[0])
+            for keys in x.children.keys():
+                # print("keys: ", keys, " key: ", key)
+                if key in keys:
+                    print("ID: {id}, Pubkey: {pubkey}".format(id=keys, pubkey=x.children[keys].value))
+            break
+        return False
+
+
+    def updatePubkey(self, x, k, val):
+        """
+        模糊查询
+        :param x:
+        :param k:
+        :return:
+        """
+        if k == '':
+            return x.leafOrNot()
+
+        for a in getAllStrings(k):
+            # print(a, type(a))
+            # print(x.children.keys())
+            key = '.'.join(a[0])
+            # print(key, x.children.keys())
+            if key in x.children.keys():
+                x.children[key].value = val
+                print("UPDATE IS OK! ID: {id}, Pubkey: {pubkey}".format(id=key, pubkey=x.children[key].value))
+                break
+
+        return False
+
+    def deleteID(self, x, k):
+        """
+        模糊查询
+        :param x:
+        :param k:
+        :return:
+        """
+        if k == '':
+            return x.leafOrNot()
+
+        for a in getAllStrings(k):
+            # print(a, type(a))
+            # print(x.children.keys())
+            key = '.'.join(a[0])
+            print(type(x.children), x.children)
+            if key in x.children.keys():
+                x.children.pop(key)
+
+                print("DELETE IS OK! ")
+                print(type(x.children), x.children)
+                break
+
+        return False
+
+
     def print_tree(self, x, string):
         """
         Print the complete sorted tree
@@ -147,12 +216,15 @@ def getAllStrings(string):
 def main():
     print("Tree 1:")
     R = RadixTree()
-    for i in range(0, 10000):
+    for i in range(0, 10):
         R.insert(R.root, "cn.bj.edu."+str(i)+".bistu.a", "test.a."+str(i))
         # R.insert(R.root, "cn.bj.edu.bistu.a." + str(i) , "a.test." + str(i))
 
+    R.updatePubkey(R.root, "cn.bj.edu.8.bistu.a", "test.a.update.Test")
+    R.deleteID(R.root, "cn.bj.edu.8.bistu.a")
     t1 = datetime.datetime.now()
-    R.search(R.root,"cn.bj.edu.90.bistu.a")
+    R.search(R.root,"cn.bj.edu.8.bistu.a")
+    R.searchPrefix(R.root, "cn.bj.edu.")
     t2 = datetime.datetime.now()
     print((t2-t1).microseconds)
 
