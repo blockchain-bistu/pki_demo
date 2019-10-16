@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e15df553-c97b-4521-8429-ce0b08d8c2f1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -239,7 +238,7 @@
       <workItem from="1571032689904" duration="73000" />
       <workItem from="1571032947381" duration="707000" />
       <workItem from="1571194802008" duration="333000" />
-      <workItem from="1571195154229" duration="2258000" />
+      <workItem from="1571195154229" duration="2468000" />
     </task>
     <task id="LOCAL-00001" summary="添加了，介入协议，crc，以及radix tree">
       <created>1570950434809</created>
@@ -269,7 +268,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571201712104</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="完善了README, 添加了各个函数的功能">
+      <created>1571203397113</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1571203397113</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
