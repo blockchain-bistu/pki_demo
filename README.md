@@ -5,6 +5,7 @@
 - 前端json， BISTUTAC中
 - contract.py 合约代码
     ```
+    针对TAC中的User
     add
     update
     get 
@@ -20,9 +21,11 @@
   
 - SRT_G.py struct radix tree
     ```
+    search()
+    searchPrefix()
     insert()
     update()
     delete()
 - TODO
 ````
-- 前端与后台的结合，缺少更新，查询，删除。
+- 前端与后台的结合，缺少更新，查询，删除，跳转。
