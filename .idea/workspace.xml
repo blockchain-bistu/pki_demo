@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e15df553-c97b-4521-8429-ce0b08d8c2f1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -237,6 +238,8 @@
       <workItem from="1571032556626" duration="18000" />
       <workItem from="1571032689904" duration="73000" />
       <workItem from="1571032947381" duration="707000" />
+      <workItem from="1571194802008" duration="333000" />
+      <workItem from="1571195154229" duration="2258000" />
     </task>
     <task id="LOCAL-00001" summary="添加了，介入协议，crc，以及radix tree">
       <created>1570950434809</created>
@@ -245,7 +248,28 @@
       <option name="project" value="LOCAL" />
       <updated>1570950434809</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="完善了SRT的update以及delete功能">
+      <created>1571194849959</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1571194849959</updated>
+    </task>
+    <task id="LOCAL-00003" summary="完善了README, 添加了各个函数的功能">
+      <created>1571201439490</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1571201439490</updated>
+    </task>
+    <task id="LOCAL-00004" summary="完善了README, 添加了各个函数的功能">
+      <created>1571201712104</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1571201712104</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -267,6 +291,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="添加了，介入协议，crc，以及radix tree" />
     <MESSAGE value="完善了SRT的update以及delete功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="完善了SRT的update以及delete功能" />
+    <MESSAGE value="完善了README, 添加了各个函数的功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="完善了README, 添加了各个函数的功能" />
   </component>
 </project>
