@@ -14,6 +14,7 @@ from random import choices, randint
 from pki.sm3 import KDF
 from pki import hashlib
 from collections import namedtuple
+import datetime
 # from astartool.random import random_hex_string
 # 选择素域，设置椭圆曲线参数
 sm2_N = int('FFFFFFFEFFFFFFFFFFFFFFFFFFFFFFFF7203DF6B21C6052B53BBF40939D54123', 16)
@@ -218,6 +219,10 @@ def Verify(Sign, E, PA, len_para=64, Hexstr=0, encoding='utf-8'):
     :param encoding: 编码格式
     :return:
     """
+
+    if type(PA) == str:
+        PA = bytes.fromhex(PA)
+
     if isinstance(Sign, str):
         r = int(Sign[0:len_para], 16)
         s = int(Sign[len_para:2 * len_para], 16)
@@ -265,6 +270,11 @@ def Sign(E, DA, K, len_para, Hexstr=0, encoding='utf-8'):
      :param DA私钥, 16进制字符串
      :param K 随机数, 16进制字符串
      """
+
+    if type(DA) == str:
+        DA = bytes.fromhex(DA)
+
+
     if Hexstr:
         e = int(E, 16)  # 输入消息本身是16进制字符串
     else:
@@ -303,6 +313,10 @@ def Encrypt(M, PA, len_para, Hexstr=0, encoding='utf-8', hash_algorithm='sm3'):
     :param hash_algorithm:
     :return:
     """
+
+    if type(PA) == str:
+        PA = bytes.fromhex(PA)
+
     if Hexstr:
         msg = M  # 输入消息本身是16进制字符串
     else:
@@ -347,6 +361,10 @@ def Decrypt(C, DA, len_para, Hexstr=0, encoding='utf-8', hash_algorithm='sm3'):
     :param DA 私钥
     :param len_para 长度，目前只支持64
     """
+
+    if type(DA) == str:
+        DA = bytes.fromhex(DA)
+
     f = getattr(hashlib, hash_algorithm)()
     if isinstance(DA, str):
         pass
@@ -390,34 +408,38 @@ def generate_keypair(len_param=64):
     return KeyPair(bytes.fromhex(PA), bytes.fromhex(d))
 
 
+def getTime(n):
+    tRes1 = 0
+    tRes2 = 0
+    tRes3 = 0
+    tRes4 = 0
+    for i in range(0,n):
+        pk, sk = generate_keypair()
+        len_para = 64
+        t1 = datetime.datetime.now()
+        sig = Sign('hello', sk, '12345678abcdef', len_para)
+        t2 = datetime.datetime.now()
+        tRes1 += (t2-t1).microseconds
 
+        t1_2 = datetime.datetime.now()
+        Verify(sig, "hello", pk, len_para)
+        t2_2 = datetime.datetime.now()
+        tRes2 += (t2_2 - t1_2).microseconds
+
+        t1_3 = datetime.datetime.now()
+        C = Encrypt(b"hello", pk, len_para, 0)
+        t2_3 = datetime.datetime.now()
+        tRes3 += (t2_3 - t1_3).microseconds
+
+        t1_4 = datetime.datetime.now()
+        m = Decrypt(C, sk, len_para)
+        t2_4 = datetime.datetime.now()
+        tRes4 += (t2_4 - t1_4).microseconds
+        # print(m)
+
+    print("Time on Sign:{n}次：总时间：{time}微秒， 平均时间：{time1}微秒。".format(n=n, time=tRes1, time1=tRes1 / n))
+    print("Time on Verify:{n}次：总时间：{time}微秒， 平均时间：{time1}微秒。".format(n=n, time=tRes2, time1=tRes2 / n))
+    print("Time on Encrypt:{n}次：总时间：{time}微秒， 平均时间：{time1}微秒。".format(n=n, time=tRes3, time1=tRes3 / n))
+    print("Time on Decrypt:{n}次：总时间：{time}微秒， 平均时间：{time1}微秒。".format(n=n, time=tRes4, time1=tRes4 / n))
 if __name__ == '__main__':
-    # print(generate_keypair(64))
-    # pk, sk = generate_keypair()
-    # print(sk)
-    # print(pk.hex())
-    len_para = 64
-
-    # sig = Sign("hello", sk, '12345678abcdef', len_para)
-    sk = 'd94870929fb991512dc6c9dda9d2e21de3be95f273546bdf6c7d5c8d52ee10a1'
-    bytesSk = bytes.fromhex(sk)
-    print(bytesSk)
-    pk = '5bdd559a1d2fcdc6c638125e12677b296b81cac5f4d0d3e628af3aab2f11ee328e8cc83c2835696089976bd1f28d8b7946088dc5be3a9674869bafd1cdd082a7'
-    bytesPk = bytes.fromhex(pk)
-    sig = Sign('hello', bytesSk, '12345678abcdef', len_para)
-    print(sig.hex())
-    # resSig = Verify(sig, "hello", pk, len_para)
-    resSig = Verify(sig, "hello", bytesPk, len_para)
-    print(resSig,type(resSig))
-
-    e = b'hello'
-
-    # C = Encrypt(e, pk, len_para, 0)
-    # C = Encrypt(e, bytesPk, len_para, 0)
-    C = '579550ad8545de36237682d27d04595a4598b827770609d924386c5eb208911213554dc4d39ab6fbd37dcbd0959e9029095e1753ecbf96b36c59e8be088d9989a14e74ac63dbccf735b6033e0a3766ea262d1067c0e76f11cef8c50f8e1ccd222148508b34'
-    bytesC = bytes.fromhex(C)
-    # print(C.hex())
-    # m = Decrypt(C, sk, len_para)
-    m = Decrypt(C, bytesSk, len_para)
-
-    print(m)
+   getTime(1000)

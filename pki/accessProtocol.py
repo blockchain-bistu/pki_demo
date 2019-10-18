@@ -9,6 +9,7 @@
  
 from pki.sm2 import Decrypt, Verify
 from pki.crc import getCrc32
+import datetime
 
 class accessProtocol:
     def __init__(self, opType, pContent, sContent, checkSum):
@@ -62,12 +63,40 @@ def getPk(self):
     pass
 
 
+def getTimes(n):
+    resT1 = 0
+    resT2 = 0
+    for i in range(1,n):
+        data = accessProtocol(
+            opType='01',
+            pContent='hello',
+            sContent='64d3f7b1c489ef7f1b2d601f735bfd9d4e13b4fbc99c1877cb6cecf7e85f84bd2e3f541d3eed0ef7328e8119c56102ffd410842123745c69d30e7ddf97f8dcd308c919726c7041d430637156b458cc2c8fcf073137434d9fc58f6378bb2b77024e3d19f493',
+            checkSum='1227288144'
+        )
+
+        t1 = datetime.datetime.now()
+        data.checkSumValid()
+        t2 = datetime.datetime.now()
+        resT1 += (t2-t1).microseconds
+
+        t3 = datetime.datetime.now()
+        data.sContentValid()
+        t4 = datetime.datetime.now()
+        resT2 += (t2 - t1).microseconds
+
+    print("Time on checkSumValid:{num}次：总时间：{time}微秒， 平均时间：{time1}微秒。".format( num=n, time=resT1,
+                                                                                  time1=resT1 / n))
+    print("Time on sContentValid:{num}次：总时间：{time}微秒， 平均时间：{time1}微秒。".format( num=n, time=resT2,
+                                                                                  time1=resT2 / n))
+
 if __name__ == "__main__":
-    data = accessProtocol(
-        opType='01',
-        pContent='hello',
-        sContent='64d3f7b1c489ef7f1b2d601f735bfd9d4e13b4fbc99c1877cb6cecf7e85f84bd2e3f541d3eed0ef7328e8119c56102ffd410842123745c69d30e7ddf97f8dcd308c919726c7041d430637156b458cc2c8fcf073137434d9fc58f6378bb2b77024e3d19f493',
-        checkSum='1227288144'
-    )
-    print(data.checkSumValid())
-    print(data.sContentValid())
+    # data = accessProtocol(
+    #     opType='01',
+    #     pContent='hello',
+    #     sContent='64d3f7b1c489ef7f1b2d601f735bfd9d4e13b4fbc99c1877cb6cecf7e85f84bd2e3f541d3eed0ef7328e8119c56102ffd410842123745c69d30e7ddf97f8dcd308c919726c7041d430637156b458cc2c8fcf073137434d9fc58f6378bb2b77024e3d19f493',
+    #     checkSum='1227288144'
+    # )
+    # print(data.checkSumValid())
+    # print(data.sContentValid())
+
+    getTimes(1000)
