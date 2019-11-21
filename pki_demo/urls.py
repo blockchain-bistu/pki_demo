@@ -16,6 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+#urlpatterns = [
+ #   path('admin/', admin.site.urls),
+#]
+#cyy
+from django.conf.urls import url,include
+
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
+
+    url(r'^admin/', admin.site.urls),
+    url(r'^pki/', include('pki.urls')),
+    # url(r'^captcha', include('captcha.urls'))
 ]
+#cyy

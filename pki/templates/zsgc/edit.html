@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h1>edit</h1>
+    <form  action="/pki/submit/" method="post">
+{% csrf_token %}
+        <h6>用户名</h6><input type="text" name="username" value={{ username }}>
+        <br/>
+        <h6>密码</h6><input type="text" name="password" value={{ password }}>
+        <br/>
+            <input type="submit" value=" 确认修改"/>
+
+    </form>
+</body>
+</html>

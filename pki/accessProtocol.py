@@ -37,9 +37,10 @@ class accessProtocol:
         :return: bool,检查校验码是否正确
         """
         # string = self.pContent+self.sContent
-        string = self.sContent
+        # string = self.sContent
+        string = self.pContent
         CRC = getCrc32(string=string)
-        if CRC == int(self.checkSum):
+        if CRC == self.checkSum:
             return True
         else:
             return False
@@ -48,15 +49,16 @@ class accessProtocol:
         len_para = 64
         if self.opType == '01':
             valid = Decrypt(self.sContent, self.serverSK, len_para)
+            print("valid: ",valid)
             return valid
-
-        if self.opType != '01':
-            # pkUser = getPk()
-            planit = Verify(self.sContent, self.serverPK, len_para)
-            if planit == '':
-                return True
-            else:
-                return False
+        return False
+        # if self.opType != '01':
+        #     # pkUser = getPk()
+        #     planit = Verify(self.sContent, self.serverPK, len_para)
+        #     if planit == '':
+        #         return True
+        #     else:
+        #         return False
 
 
 def getPk(self):

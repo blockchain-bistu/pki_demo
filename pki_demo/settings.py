@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'pki',
 ]
 
 MIDDLEWARE = [
@@ -69,6 +70,31 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'pki_demo.wsgi.application'
 
+#cyy
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        #  redis默认是6379端口，第0的数据库
+        'LOCATION': 'redis://127.0.0.1:6379',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+            "PASSWORD": "",
+        }
+
+    }
+}
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+SESSION_CACHE_ALIAS = 'default'
+
+SESSION_COOKIE_NAME = "sessionid"  # Session的cookie保存在浏览器上时的key，即：sessionid＝随机字符串
+SESSION_COOKIE_PATH ="/"  # Session的cookie保存的路径
+SESSION_COOKIE_DOMAIN = None  # Session的cookie保存的域名
+SESSION_COOKIE_SECURE = False  # 是否Https传输cookie
+SESSION_COOKIE_HTTPONLY = True  # 是否Session的cookie只支持http传输
+SESSION_COOKIE_AGE = 1209600  # Session的cookie失效日期（2周）
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False  # 是否关闭浏览器使得Session过期
+SESSION_SAVE_EVERY_REQUEST = False  # 是否每次请求都保存Session，默认修改之后才保存
+#cyy
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
@@ -79,8 +105,9 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+#cyy
 
-
+#cyy
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
@@ -103,9 +130,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-hans'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
@@ -118,3 +145,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+#cyy
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+#cyy

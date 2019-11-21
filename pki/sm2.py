@@ -11,6 +11,7 @@
 
 from functools import reduce
 from random import choices, randint
+
 from pki.sm3 import KDF
 from pki import hashlib
 from collections import namedtuple
@@ -75,6 +76,8 @@ def is_prime(number: (str, int), itor=10):
 
 
 def get_hash(algorithm_name, message, Hexstr=0, encoding='utf-8'):
+    message = str(message)
+    print("message:", message)
     if hasattr(hashlib, algorithm_name):
         f = getattr(hashlib, algorithm_name)()
     else:
@@ -219,6 +222,9 @@ def Verify(Sign, E, PA, len_para=64, Hexstr=0, encoding='utf-8'):
     :param encoding: 编码格式
     :return:
     """
+    if type(Sign) != bytes:
+        Sign = bytes.fromhex(Sign)
+
 
     if type(PA) == str:
         PA = bytes.fromhex(PA)
@@ -441,5 +447,25 @@ def getTime(n):
     print("Time on Verify:{n}次：总时间：{time}微秒， 平均时间：{time1}微秒。".format(n=n, time=tRes2, time1=tRes2 / n))
     print("Time on Encrypt:{n}次：总时间：{time}微秒， 平均时间：{time1}微秒。".format(n=n, time=tRes3, time1=tRes3 / n))
     print("Time on Decrypt:{n}次：总时间：{time}微秒， 平均时间：{time1}微秒。".format(n=n, time=tRes4, time1=tRes4 / n))
+
+
 if __name__ == '__main__':
-   getTime(1000)
+   # getTime(1000)
+   sk = 'd94870929fb991512dc6c9dda9d2e21de3be95f273546bdf6c7d5c8d52ee10a1'
+   pk = '5bdd559a1d2fcdc6c638125e12677b296b81cac5f4d0d3e628af3aab2f11ee328e8cc83c2835696089976bd1f28d8b7946088dc5be3a9674869bafd1cdd082a7'
+   sig = Sign('1.1.1.1.frank.1234', sk, '12345678abcdef', 64 )
+   print(sig.hex(),type(sig.hex()))
+   # pk, sk = generate_keypair()
+   # len_para = 64
+   # sig = Sign('hello', sk, '12345678abcdef', len_para)
+   # print(sig)
+   #
+   sig = '42133b718ee607e50353d836dce6e24854211684950349846ab4a823b685808fc9d867005d0a223bec8a509395a992446e711f85efa54d30d6b26375b0dec283'
+   res = Verify(sig, "1.1.1.1.sahib.2341", pk, 64)
+   print(res)
+   #
+   # C = Encrypt(b"hello", pk, len_para, 0)
+   # print(C)
+   C = 'eb6742c6f0d88e3a972fe76b55b7091d702071bb80a3180fde34982900bd0aae2431878e056bce655c3dd5e2a41276ffd559373cd7048946efe71af78b0a0dc2fbef91620dc9aa61303bc5b6960b5b5fd9bcd4f6d2d8d77918363c87e27bd5bc7ebc8fcf7d5d86af2582e3329d06cac23e3666f658'
+   m = Decrypt(C, sk, 64)
+   print(m)

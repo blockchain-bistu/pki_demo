@@ -9,264 +9,148 @@
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">
 	<title>信任锚系统</title>
-	<link type="text/css" rel="stylesheet" href="css/default.css" />
+	<link type="text/css" rel="stylesheet" href="/static/css/default.css" />
 	<!--必要样式-->
-	<link type="text/css" rel="stylesheet" href="css/zhucestyles.css" />
-	<link type="text/css" rel="stylesheet" href="css/demo.css" />
-	<link type="text/css" rel="stylesheet" href="css/loaders.css" />
-   <link rel="stylesheet" href="css/xiala/css/ydui.css?rev=@@hash"/>
-    <link rel="stylesheet" href="css/xiala/css/demo.css"/>
-    <script src="js/xiala/ydui.flexible.js"></script>
-</head>
+	<link type="text/css" rel="stylesheet" href="/static/css/styles.css" />
+	<link type="text/css" rel="stylesheet" href="/static/css/demo.css" />
+	<link type="text/css" rel="stylesheet" href="/static/css/loaders.css" />
+
+
+	<style type="text/css">
+
+	#Main {
+		padding-right: 10px;
+	width: 300px;
+	text-align: center;
+	margin: 0 auto;
+	}
+	table {
+
+	width: 300px;
+	border-collapse: collapse;
+	text-align: left;
+	margin: 10px 5px 5px 10px;
+	cursor: default;
+	border: 1px solid #ccc;
+	margin-top: 20px;
+	box-shadow: 0px 0px 10px rgba(0,255,255,0.75);
+	border: 1px solid rgba(127,255,255,0.75);
+	-webkit-box-shadow: 0px 0px 8px rgba(0,255,255,0.75);
+	-moz-box-shadow: 0px 0px 8px rgba(0,255,255,0.75);
+	box-shadow: 0px 0px 8px rgba(0,255,255,0.75);
+	}
+	.tbTitle>th {
+	font-weight: 300;
+	text-align: center;
+	padding: 10px 0 10px 0;
+	font: 15px "微软雅黑", Arial, Helvetica, sans-serif;
+	background-color: rgba(0,93,93,0.8);
+	color: #efefef;
+	text-shadow: 0px 0px 20px rgba(127,255,255,1);
+	}
+	th, td {
+	border: 1px solid rgba(127,255,255,0.55);
+	}
+	.tbContext:hover {
+	background-color: rgba(0,99,99,0.9) !important;
+	}
+	td, td>a {
+	font: 13px "微软雅黑", Arial, Helvetica, sans-serif;
+	text-align: center;
+	padding: 6px 0 6px 0;
+	color: rgba(127,255,255,0.75);
+	text-shadow: 0px 0px 20px rgba(0,255,255,0.75);/*-webkit-filter: drop-shadow(0px 0px 20px rgba(0,255,255,0.95));
+	-moz-filter: drop-shadow(0px 0px 20px rgba(0,255,255,0.95));
+	-o-filter: drop-shadow(0px 0px 20px rgba(0,255,255,0.95));
+	-ms-filter: drop-shadow(0px 0px 20px rgba(0,255,255,0.95));
+	filter: drop-shadow(0px 0px 20px rgba(0,255,255,0.95));*/
+	}
+	.tbContext:nth-child(2n+1) {
+	background-color: rgba(0,127,127,0.1);
+	}
+	.login_fields__zhuce_shibx{
+		margin-top: 43px;
+		margin-right: 78px;
+	}
+
+
+	</style>
+
+
+
+	</head>
 
 <body>
 <div class='login'>
 	<div class='login_title'>
-		<span>用户注册</span>
-
-
-	</div>
-	<div class='login_fields'>
-		<div class='login_fields__user'>
-			<div class='icon'>
-				<img alt="" src='img/user_icon_copy.png'>
-			</div>
-			<input name="login" placeholder='用户名' maxlength="16" type='text' autocomplete="off" />
-			
-		</div>
-
-
-
-<div class='login_fields__user'>
-			<div class='icon'>
-				<img alt="" src='img/lock_icon_copy.png'>
-			</div>
-			 <input type="text" name="address" readonly id="J_Address2"  placeholder="请选择地址">
-			
-		</div>
-
-
-
-
-
-
-		<div class='login_fields__password'>
-			<div class='icon'>
-				<img alt="" src='img/key.png'>
-			</div>
-			<input name="pwd" placeholder='密码' maxlength="16" type='password' autocomplete="off">
-			
-		</div>
-		
-		<div class='login_fields__submit'>
-			
-
-                                           <input type='button' value='注册' class='login_fields__zhuce_shibx' id="denglu">
-                                         <input type='button' value='返回' class='login_fields__zhuce_shibx' onclick=window.location.href="index.html">
-                                      
-		
-		</div>
-
-		
+		<span>路由表</span>
 	</div>
 
-	<div class='success'>
-			<p>恭喜你！注册成功</p>
+	<div id="Demo">
+		<div id="Main">
+			<table>
+				<tr class="tbTitle">
+					<th>列1</th>
+					<th>列2</th>
+					<th>列3</th>
 
-				<input type='button' value='返回' class='login_fields__zhuce_shibx' onclick=window.location.href="index.html">
+				</tr>
+				<tr class="tbContext">
+					<td>数据1</td>
+					<td>数据2</td>
+					<td>数据3</td>
+
+				</tr>
+				<tr class="tbContext">
+					<td>数据1</td>
+					<td>数据2</td>
+					<td>数据3</td>
+
+				</tr>
+				<tr class="tbContext">
+					<td>数据1</td>
+					<td>数据2</td>
+					<td>数据3</td>
+
+				</tr>
+
+			</table>
+
+		</div>
+
+
+		<input type='button' value='确定' class='login_fields__zhuce_shibx' onclick=window.location.href="/pki/denglu">
 
 	</div>
-	
-</div>
 
 
 
-<div class='authent'>
-	<div class="loader" style="height: 44px;width: 44px;margin-left: 28px;">
-		<div class="loader-inner ball-clip-rotate-multiple">
-			<div></div>
-			<div></div>
-			<div></div>
-		</div>
+
+
+
+	<div class='disclaimer'>
+		<p>欢迎登陆信任锚系统</p>
 	</div>
 </div>
-<div class="OverWindows"></div>
-
-
-<link type="text/css" rel="stylesheet" href="layui/css/layui.css" />
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/jquery-ui.min.js"></script>
-<script type="text/javascript" src='js/stopExecutionOnTimeout.js?t=1'></script>
-<script type="text/javascript" src="layui/layui.js"></script>
-<script type="text/javascript" src="js/particleground.js"></script>
-<script type="text/javascript" src="js/treatment.js"></script>
-<script type="text/javascript" src="js/jquery.mockjax.js"></script>
- <script src="js/xiala/ydui.flexible.js"></script>
-<script src="js/xiala/ydui.citys.js"></script>
-<script src="js/xiala/ydui.js"></script>
-
-
-<script>
-    /**
-     * 默认调用                    下拉
-     */
-    !function () {
-        var $target = $('#J_Address');
-
-        $target.citySelect();
-
-        $target.on('click', function (event) {
-            event.stopPropagation();
-            $target.citySelect('open');
-        });
-
-        $target.on('done.ydui.cityselect', function (ret) {
-        	console.log(ret)
-            $(this).val(ret.country + ' ' + ret.provance + ' ' + ret.city + ' ' + ret.area);
-        });
-    }();
-    /**
-     * 设置默认值
-     */
-    !function () {
-        var $target = $('#J_Address2');
-
-        $target.citySelect({
-        	country: '中国',
-          //  provance: '北京市',
-          //  city: '直辖市',
-          //  area: '海淀区',
-            id: '1-31-330-3033'
-        });
-
-        $target.on('click', function (event) {
-            event.stopPropagation();
-            $target.citySelect('open');
-        });
-
-        $target.on('done.ydui.cityselect', function (ret) {
-        	console.log(ret);
-			console.log(ret.id);
-            $(this).val(ret.country + ' ' + ret.provance + ' ' + ret.city + ' ' + ret.area+' '+ret.id);
-        });
-    }();
-
-
-
-	layui.use('layer', function () {
-//		var msgalert = '默认账号:' + truelogin + '<br/> 默认密码:' + truepwd;
-//		var index = layer.alert(msgalert, { icon: 6, time: 4000, offset: 't', closeBtn: 0, title: '友情提示', btn: [], anim: 2, shade: 0 });
-//		layer.style(index, {
-//			color: '#777'
-//		});
-		//非空验证
-		$('#denglu').click(function () {
-			var login = $('input[name="login"]').val();
-			var pwd = $('input[name="pwd"]').val();
-			var address = $('input[name="address"]').val();
-			if (login == '') {
-				ErroAlert('请输入您的账号');
-			} else if (pwd == '') {
-				ErroAlert('请输入密码');
-			} else if (address == '') {
-				ErroAlert('请输入地址');
-			} else {
-				//认证中..
-//				fullscreen();
-
-				$('.login').addClass('test'); //倾斜特效
-
-				setTimeout(function () {
-					$('.login').addClass('testtwo'); //平移特效
-				}, 300);
-
-				setTimeout(function () {
-					$('.authent').show().animate({ right: -320 }, {
-						easing: 'easeOutQuint',
-						duration: 600,
-						queue: false
-					});
-
-					$('.authent').animate({ opacity: 1 }, {
-						duration: 200,
-						queue: false
-					}).addClass('visible');
-				}, 500);
-
-				//登陆
-				var JsonData = { login: login, pwd: pwd, address: address };
-				//此处做为ajax内部判断
-
-				var url = "Ajax/zhuce";
-
-
-				AjaxPost(url, JsonData,
-						function () {
-							//ajax加载中
-						},
-						function (data) {
-							//ajax返回
-							//认证完成
-							setTimeout(function () {
-								$('.authent').show().animate({ right: 90 }, {
-									easing: 'easeOutQuint',
-									duration: 600,
-									queue: false
-								});
-								$('.authent').animate({ opacity: 0 }, {
-									duration: 200,
-									queue: false
-								}).addClass('visible');
-								$('.login').removeClass('testtwo'); //平移特效
-							}, 2000);
-							setTimeout(function () {
-								$('.authent').hide();
-								$('.login').removeClass('test');
-								if (data.Status == 'ok') {
-
-
-									//登录成功
-									$('.login div').fadeOut(100);
-
-//									window.location.href="/test.html";
-									$('.success').fadeIn(1000);
-									$('.success').html(data.Text);
-									//跳转操作
-
-
-								} else {
-									AjaxErro(data);
-								}
-							}, 2400);
-						})
-			}
-		})
-	})
 
 
 
 
-		$.mockjax({
-			url: 'Ajax/zhuce',
-			status: 200,
-			responseTime: 50,
-			responseText: {"Status":"ok"}
-		});
+<link type="text/css" rel="stylesheet" href="/static/layui/css/layui.css" />
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src='/static/js/stopExecutionOnTimeout.js?t=1'></script>
+<script type="text/javascript" src="/static/layui/layui.js"></script>
+<script type="text/javascript" src="/static/js/particleground.js"></script>
+<script type="text/javascript" src="/static/js/treatment.js"></script>
+<script type="text/javascript" src="/static/js/jquery.mockjax.js"></script>
 
 
 
-
-</script>
-
-
-
-
-
-
-		<script type="text/javascript" src="img/ThreeWebGL.js"></script>
-		<script type="text/javascript" src="img/ThreeExtras.js"></script>
-		<script type="text/javascript" src="img/Detector.js"></script>
-		<script type="text/javascript" src="img/RequestAnimationFrame.js"></script>
+		<script type="text/javascript" src="/static/img/ThreeWebGL.js"></script>
+		<script type="text/javascript" src="/static/img/ThreeExtras.js"></script>
+		<script type="text/javascript" src="/static/img/Detector.js"></script>
+		<script type="text/javascript" src="/static/img/RequestAnimationFrame.js"></script>
 		<script id="vs" type="x-shader/x-vertex">
 			varying vec2 vUv; void main() { vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 ); }
 		</script>
@@ -275,6 +159,21 @@
 
 		</script>
 		<script type="text/javascript">
+
+
+
+			var snowHandler={
+				mSizeMode:0,
+				mSpeed:500,
+				initialize:function(){
+					var snowCanvas=$("<canvas></canvas>");
+				}
+			}
+
+
+
+
+
 			if(!Detector.webgl) Detector.addGetWebGLMessage();
 			var canvas = document.createElement('canvas');
 			canvas.width = 32;

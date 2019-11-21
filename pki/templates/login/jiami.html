@@ -9,42 +9,392 @@
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">
 	<title>信任锚系统</title>
-	<link type="text/css" rel="stylesheet" href="css/default.css" />
+	<link type="text/css" rel="stylesheet" href="/static/css/default.css" />
 	<!--必要样式-->
-	<link type="text/css" rel="stylesheet" href="css/styles.css" />
-	<link type="text/css" rel="stylesheet" href="css/demo.css" />
-	<link type="text/css" rel="stylesheet" href="css/loaders.css" />
+	<link type="text/css" rel="stylesheet" href="/static/css/styles.css" />
+	<link type="text/css" rel="stylesheet" href="/static/css/demo.css" />
+	<link type="text/css" rel="stylesheet" href="/static/css/loaders.css" />
+
+
+<!-- for pkcs5pkey -->
+<script src="/static/components/googlecode/core.js"></script>
+<script src="/static/components/googlecode/cipher-core.js"></script>
+<script src="/static/components/googlecode/md5.js"></script>
+<script src="/static/components/googlecode/tripledes.js"></script>
+<script src="/static/components/googlecode/enc-base64.js"></script>
+<!-- for crypto -->
+<script src="/static/components/googlecode/sha1.js"></script>
+<script src="/static/components/googlecode/sha256.js"></script>
+<!-- for crypto, asn1, asn1x509 -->
+<script src="/static/components/yahoo/yahoo-min.js"></script>
+
+<script language="JavaScript" type="text/javascript" src="/static/ext/jsbn.js"></script>
+<script language="JavaScript" type="text/javascript" src="/static/ext/jsbn2.js"></script>
+<script language="JavaScript" type="text/javascript" src="/static/ext/prng4.js"></script>
+<script language="JavaScript" type="text/javascript" src="/static/ext/rng.js"></script>
+<script language="JavaScript" type="text/javascript" src="/static/ext/rsa.js"></script>
+<script language="JavaScript" type="text/javascript" src="/static/ext/rsa2.js"></script>
+<script language="JavaScript" type="text/javascript" src="/static/ext/base64.js"></script>
+<script language="JavaScript" type="text/javascript" src="/static/asn1hex-1.1.js"></script>
+<script language="JavaScript" type="text/javascript" src="/static/rsapem-1.1.js"></script>
+<script language="JavaScript" type="text/javascript" src="/static/rsasign-1.2.js"></script>
+<script language="JavaScript" type="text/javascript" src="/static/x509-1.1.js"></script>
+<script language="JavaScript" type="text/javascript" src="/static/pkcs5pkey-1.0.js"></script>
+<script language="JavaScript" type="text/javascript" src="/static/asn1-1.0.js"></script>
+<script language="JavaScript" type="text/javascript" src="/static/asn1x509-1.0.js"></script>
+<script language="JavaScript" type="text/javascript" src="/static/components/sm2/crypto-1.1.js"></script>
+
+<script language="JavaScript" type="text/javascript" src="/static/ext/ec.js"></script>
+<script language="JavaScript" type="text/javascript" src="/static/ext/ec-patch.js"></script>
+<script language="JavaScript" type="text/javascript" src="/static/ecdsa-modified-1.0.js"></script>
+<script language="JavaScript" type="text/javascript" src="/static/components/sm2/sm3.js"></script>
+<script language="JavaScript" type="text/javascript" src="/static/components/sm2/sm3-sm2-1.0.js"></script>
+<script language="JavaScript" type="text/javascript" src="/static/components/sm2/ecparam-1.0.js"></script>
+<script language="JavaScript" type="text/javascript" src="/static/components/sm2/sm2.js"></script>
+<script language="JavaScript" type="text/javascript">
+function doGenerate() {
+  var f1 = document.form1;
+  var curve = f1.curve1.value;
+  var ec = new KJUR.crypto.ECDSA({"curve": curve});
+  var keypair = ec.generateKeyPairHex();
+
+  f1.prvkey1.value = keypair.ecprvhex;
+  f1.pubkey1.value = keypair.ecpubhex;
+}
+
+function doCrypt() {
+    var f1 = document.form1;
+    
+    var curve = f1.curve1.value;
+    var msg = f1.msg1.value;
+    var msgData = CryptoJS.enc.Utf8.parse(msg);
+
+    var pubkeyHex = f1.pubkey1.value;
+    if (pubkeyHex.length > 64 * 2) {
+        pubkeyHex = pubkeyHex.substr(pubkeyHex.length - 64 * 2);
+    }
+
+    var xHex = pubkeyHex.substr(0, 64);
+    var yHex = pubkeyHex.substr(64);
+	
+	var cipherMode = f1.cipherMode.value;
+    
+    var cipher = new SM2Cipher(cipherMode);
+    var userKey = cipher.CreatePoint(xHex, yHex);
+	
+	msgData = cipher.GetWords(msgData.toString());
+	
+    var encryptData = cipher.Encrypt(userKey, msgData);
+    f1.sigval1.value = encryptData;
+
+}
+
+function doDecrypt() {
+    var f1 = document.form1;
+    var prvkey = f1.prvkey1.value;
+    var encryptData = f1.sigval1.value;
+    
+    var privateKey = new BigInteger(prvkey, 16);
+	
+	var cipherMode = f1.cipherMode.value;
+        
+    var cipher = new SM2Cipher(cipherMode);
+    var data = cipher.Decrypt(privateKey, encryptData);
+	
+    alert(data ? '解密成功，原文：' + data : '解密失败！');
+}
+//十六进制转字符串
+
+function hexCharCodeToStr(hexCharCodeStr) {
+　　var trimedStr = hexCharCodeStr.trim();
+　　var rawStr = 
+　　trimedStr.substr(0,2).toLowerCase() === "0x"
+　　? 
+　　trimedStr.substr(2) 
+　　: 
+　　trimedStr;
+　　var len = rawStr.length;
+　　if(len % 2 !== 0) {
+　　　　alert("Illegal Format ASCII Code!");
+　　　　return "";
+　　}
+　　var curCharCode;
+　　var resultStr = [];
+　　for(var i = 0; i < len;i = i + 2) {
+　　　　curCharCode = parseInt(rawStr.substr(i, 2), 16); // ASCII Code Value
+　　　　resultStr.push(String.fromCharCode(curCharCode));
+　　}
+　　return resultStr.join("");
+}
+
+
+//字符串转16进制
+function str2hex(str){
+  if(str === ""){
+    return "";
+  }
+  var arr = [];
+  //arr.push("0x");
+  for(var i=0;i<str.length;i++){
+    arr.push(str.charCodeAt(i).toString(16));
+  }
+  return arr.join('');
+}
+
+//私钥签名
+function doSign() {
+//	var f1 = document.form1;
+//	var f2 = document.form2;
+//	var prvkey = f2.prvkey2.value;
+//	var curve = f1.curve1.value;
+//	var sigalg ="SM3withSM2";
+////			f2.sigalg1.value;
+//	var msg1 = f2.msg2.value;
+//
+//	var sig = new KJUR.crypto.Signature({"alg": sigalg, "prov": "cryptojs/jsrsa"});
+//	sig.initSign({'ecprvhex': prvkey, 'eccurvename': curve});
+//	sig.updateString(msg1);
+//	var sigValueHex = sig.sign();
+//
+//	f2.sigval2.value = sigValueHex;
+}
+
+
+function certCrypt() {
+  	var certData = document.getElementById('txtCertData').value;
+               var certData = hexCharCodeToStr(certData);
+               var certData =btoa(certData);
+  	if( certData != "") {
+  		var key = X509.getPublicKeyFromCertPEM(certData);
+		document.getElementById('txtPubKey').value = key.pubKeyHex;
+  	}
+
+  	var pubkey = document.getElementById('txtPubKey').value.replace(/\s/g,'');
+ 	
+  
+    var pubkeyHex = pubkey;
+    if (pubkeyHex.length > 64 * 2) {
+        pubkeyHex = pubkeyHex.substr(pubkeyHex.length - 64 * 2);
+    }
+
+    var xHex = pubkeyHex.substr(0, 64);
+    var yHex = pubkeyHex.substr(64);
+	
+	var cipherMode = document.getElementById('cipherMode').value;
+    
+    var cipher = new SM2Cipher(cipherMode);
+    var userKey = cipher.CreatePoint(xHex, yHex);
+	
+	var msg = document.getElementById('txtRawData').value;
+	var msgData = CryptoJS.enc.Utf8.parse(msg);
+	msgData = cipher.GetWords(msgData.toString());
+	
+    var encryptData = cipher.Encrypt(userKey, msgData);
+    document.getElementById('txtCryptData').value = str2hex(atob(hex2b64(encryptData)));
+}
+</script>
+
+
+
+<style>
+body .login {
+width: 777px;
+    height: 532px;
+	padding: 21px 40px 40px 40px;
+}
+
+body #denglu {
+	padding: 5px 9px;
+	margin-left: 400px;
+	margin-top: -28px;
+	/*margin-bottom: 10px;*/
+	color: #ffffff;
+	border: 2px solid #ffffff;
+	font-size: 10px;
+}
+</style>
+
 </head>
 
-<body>
+<body onload="$('#txtRawData').val(getUrlParam('id'))">
 <div class='login'>
-	<div class='login_title'>
-		<span>用户登录</span>
-	</div>
+
+  <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <fieldset id="main_content" class="inner">
+          <legend>SM2加密</legend>
+<script type="text/javascript">
+	if(/msie/.test( navigator.userAgent.toLowerCase() )){ document.write("<p><em>若IE浏览器下提示停止运行此脚本，请选择<b>否(N)</b>继续运行。</em></p>");}
+</script>
 	
-	<div class='disclaimer'>
-		<p>欢迎登陆信任锚系统</p>
-	</div>
+<!-- now editing -->
+
+
+          <form name="form1">
+
+
+    <h4>生成密钥对</h4>
+ECC名字:
+<select name="curve1" style="width:93px;">
+<option value="sm2">SM2
+<option value="secp256r1">secp256r1 (= NIST P-256, P-256, prime256v1)
+<option value="secp256k1">secp256k1
+<option value="secp384r1">secp384r1 (= NIST P-384, P-384)
+</select><br/>
+
+<input type="button" value="生成密钥对" onClick="doGenerate();" id="denglu" style="margin-left: 179px;"/>
+			  <br>
+<p>
+私钥(十六进制): <input type="text" name="prvkey1" value="" size="44"/><br/><br/>
+公钥(十六进制): <input type="text" name="pubkey1" value="" size="44"/><br/>
+</p>
+<br>
+<!-- ============================================================== -->
+
+<!--<h4>加密信息</h4>-->
+加密模式:
+              <select id="cipherMode" name="cipherMode">
+                  <option value="1" selected="selected">C1C3C2
+                  <option value="0">C1C2C3
+              </select><br/><br/>
+
+需加密信息:
+<input type="text" name="msg1" size="40"/><br/>
+<input type="button" value="加密" onClick="doCrypt();" id="denglu"  /><br/>
+<p>
+加密后(十六进制): <input type="text" id="sigval1" name="sigval1" value="" size="44" /><br/><br/>
+</p>
+
+
+<!--<h4>解密信息</h4>-->
+<!--<input type="button" value="解密" onClick="doDecrypt();" id="denglu" style="margin-left: 345px; margin-top: 6px; font-size: 14px;"/>-->
+<!--<input type="reset" value="重置" id="denglu" style="margin-left: 469px; margin-top: -31px; font-size: 14px;"/>-->
+
+
+
+		  </form>
+      </fieldset>
+
+<!-- now editing -->
+
+      <!--</section>-->
+	  
+	  <!--<section class="inner">-->
+	  	<hr size="1" />
+		<form name="form2">
+
+	<!--    <h4>SM2签名</h4> -->
+
+            <legend>SM2签名</legend>
+            <ul>
+                <li>
+                    <label>原始数据：<input type="text" id="txtRawData"  size="42" name="msg2"
+					 /></label>
+                </li>
+				<li>
+                    <label >用户私钥(十六进制)：<textarea name="prvkey2"  id="txtCertData"style="width:215px; height: 42px; margin-top: 10px; ">
+</textarea>
+
+					</label>
+                </li>
+                <li style="display:none">
+                    <label>证书公钥：<input type="text" id="txtPubKey" size="120" 
+					 value="" /></label>
+                </li>
+				<li>
+					<input type="button" value="签名" class="sign"  id="denglu" style="margin-left: 408px;" />
+				</li>
+                <li>
+                    <label style="float: left;">签名后数据(十六进制)：<textarea id="txtCryptData" readonly="readonly" style="width:400px; height:40px; margin-top: 10px;" class="mima" name="sigval2" ></textarea>
+{#						<input type="button" value="确认"#}
+{#							   onclick="window.location.href=(changeURLArg('index.html','mima',$('.mima').val()))"  id="denglu" style="margin-left: 617px; margin-top: -39px;"/>#}
+					 </label>
+                </li>
+				
+            </ul>
+       </form>
+        </fieldset>
+      <!--</section>-->
+	  
+    </div>
+
+	<input type="button" value="返回" onclick="window.close()" id="denglu" style="margin-left: 345px; margin-top: 6px;"/>
+
 </div>
 
+<link type="text/css" rel="stylesheet" href="/static/layui/css/layui.css" />
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery.cookie.js"></script>
+
+<script type="text/javascript" src='/static/js/stopExecutionOnTimeout.js?t=1'></script>
+<script type="text/javascript" src="/static/layui/layui.js"></script>
+<script type="text/javascript" src="/static/js/particleground.js"></script>
+<script type="text/javascript" src="/static/js/treatment.js"></script>
+<script type="text/javascript" src="/static/js/jquery.mockjax.js"></script>
+<script type="text/javascript" src="/static/js/sm2.js"></script>
+
+<script>
+
+	$('.sign').click(function () {
+		var username = $('#txtRawData').val();
+		var privatekey = $('#txtCertData').val();
+			$.ajax({
+				type: "post",
+				data: {username:username,privatekey:privatekey},
+				url: "/pki/sig/",
+				cache: false,
+				success: function (ret) {
+
+					document.form2.sigval2.value = ret;
+
+				},
+				error: function () {
+					alert("false");
+				},
+			})
+	})
+
+
+	function changeURLArg(url,arg,arg_val){
+		var pattern=arg+'=([^&]*)';
+		var replaceText=arg+'='+arg_val;
+		if(url.match(pattern)){
+			var tmp='/('+ arg+'=)([^&]*)/gi';
+			tmp=url.replace(eval(tmp),replaceText);
+			return tmp;
+		}else{
+			if(url.match('[\?]')){
+				return url+'&'+replaceText;
+			}else{
+				return url+'?'+replaceText;
+			}
+		}
+		return url+'\n'+arg+'\n'+arg_val;
+
+	}
 
 
 
-<link type="text/css" rel="stylesheet" href="layui/css/layui.css" />
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/jquery-ui.min.js"></script>
-<script type="text/javascript" src='js/stopExecutionOnTimeout.js?t=1'></script>
-<script type="text/javascript" src="layui/layui.js"></script>
-<script type="text/javascript" src="js/particleground.js"></script>
-<script type="text/javascript" src="js/treatment.js"></script>
-<script type="text/javascript" src="js/jquery.mockjax.js"></script>
+	function getUrlParam(name) {
 
 
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
 
-		<script type="text/javascript" src="img/ThreeWebGL.js"></script>
-		<script type="text/javascript" src="img/ThreeExtras.js"></script>
-		<script type="text/javascript" src="img/Detector.js"></script>
-		<script type="text/javascript" src="img/RequestAnimationFrame.js"></script>
+		var r = window.location.search.substr(1).match(reg); //匹配目标参数
+
+		if (r != null) return unescape(r[2]);
+
+
+		return null; //返回参数值
+	}
+
+</script>
+
+		<script type="text/javascript" src="/static/img/ThreeWebGL.js"></script>
+		<script type="text/javascript" src="/static/img/ThreeExtras.js"></script>
+		<script type="text/javascript" src="/static/img/Detector.js"></script>
+		<script type="text/javascript" src="/static/img/RequestAnimationFrame.js"></script>
 		<script id="vs" type="x-shader/x-vertex">
 			varying vec2 vUv; void main() { vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 ); }
 		</script>

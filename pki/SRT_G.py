@@ -99,8 +99,8 @@ class RadixTree:
             key = '.'.join(a[0])
             # print(key, x.children.keys())
             if key in x.children.keys():
-
-                return "ID: {id}, Pubkey: {pubkey}".format(id=key, pubkey=x.children[key].value)
+                return x.children[key].value
+                # return "ID: {id}, Pubkey: {pubkey}".format(id=key, pubkey=x.children[key].value)
 
                 # k = '.'.join(k)
                 #
@@ -121,13 +121,18 @@ class RadixTree:
         if k == '':
             return x.leafOrNot()
 
-
+        resSearchPrefix = []
         for a in getAllStrings(k):
             key = '.'.join(a[0])
             for keys in x.children.keys():
                 # print("keys: ", keys, " key: ", key)
                 if key in keys:
-                    return "ID: {id}, Pubkey: {pubkey}".format(id=keys, pubkey=x.children[keys].value)
+                    resSearchPrefix.append(keys)
+                    resSearchPrefix.append(x.children[keys].value)
+                    # resSearchPrefix[key] = x.children[keys].value
+                    # pubkey.append(x.children[keys].value)
+                    # return "ID: {id}, Pubkey: {pubkey}".format(id=keys, pubkey=x.children[keys].value)
+            return resSearchPrefix
 
         return False
 
@@ -149,7 +154,7 @@ class RadixTree:
             # print(key, x.children.keys())
             if key in x.children.keys():
                 x.children[key].value = val
-                return "UPDATE IS OK! ID: {id}, Pubkey: {pubkey}".format(id=key, pubkey=x.children[key].value)
+                return "UPDATE IS OK! "
 
 
         return False
@@ -221,13 +226,15 @@ def main():
         R.insert(R.root, "cn.bj.edu."+str(i)+".bistu.a", "test.a."+str(i))
         # R.insert(R.root, "cn.bj.edu.bistu.a." + str(i) , "a.test." + str(i))
 
-    print(R.updatePubkey(R.root, "cn.bj.edu.8.bistu.a", "test.a.update.Test"))
-    R.deleteID(R.root, "cn.bj.edu.8.bistu.a")
-    t1 = datetime.datetime.now()
-    R.search(R.root,"cn.bj.edu.8.bistu.a")
-    R.searchPrefix(R.root, "cn.bj.edu.")
-    t2 = datetime.datetime.now()
-    print((t2-t1).microseconds)
+    # print(R.updatePubkey(R.root, "cn.bj.edu.8.bistu.a", "test.a.update.Test"))
+    # R.deleteID(R.root, "cn.bj.edu.8.bistu.a")
+    # t1 = datetime.datetime.now()
+    pubkey = R.search(R.root,"cn.bj.edu.8.bistu.a")
+    print(pubkey,type(pubkey))
+    pubkeyPrefix = R.searchPrefix(R.root, "cn.bj.edu.")
+    print(pubkeyPrefix, type(pubkeyPrefix))
+    # t2 = datetime.datetime.now()
+    # print((t2-t1).microseconds)
 
     # R.print_tree(R.root,'')
     # f = open('word_list/words_44k.txt')
@@ -297,6 +304,6 @@ def getTime(n,num):
     print("Time on delete:{num}次：已有节点：{n},总时间：{time}微秒， 平均时间：{time1}微秒。".format(num=num, n=n, time=deleteT, time1=deleteT / num))
 
 if __name__ == '__main__':
-    # main()
-    for i in range(7,9):
-        getTime( i * 10000, 100)
+    main()
+    # for i in range(7,9):
+    #     getTime( i * 10000, 100)

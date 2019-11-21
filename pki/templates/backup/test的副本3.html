@@ -9,13 +9,72 @@
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">
 	<title>信任锚系统</title>
-	<link type="text/css" rel="stylesheet" href="css/default.css" />
+	<link type="text/css" rel="stylesheet" href="/static/css/default.css" />
 	<!--必要样式-->
-	<link type="text/css" rel="stylesheet" href="css/chastyles.css" />
-	<link type="text/css" rel="stylesheet" href="css/demo.css" />
-	<link type="text/css" rel="stylesheet" href="css/loaders.css" />
-	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="/static/css/chastyles.css" />
+	<link type="text/css" rel="stylesheet" href="/static/css/demo.css" />
+	<link type="text/css" rel="stylesheet" href="/static/css/loaders.css" />
+	<link href="/static/css/bootstrap.min.css" rel="stylesheet">
+	<!--弹窗-->
+	<link rel="stylesheet" type="text/css" href="/static/css/sweetalert.css">
+	<script type="text/javascript" src="/static/js/sweetalert-dev.js"></script>
+
+	<!-- for pkcs5pkey -->
+	<script src="/static/components/googlecode/core.js"></script>
+	<script src="/static/components/googlecode/cipher-core.js"></script>
+	<script src="/static/components/googlecode/md5.js"></script>
+	<script src="/static/components/googlecode/tripledes.js"></script>
+	<script src="/static/components/googlecode/enc-base64.js"></script>
+
+
+	<!-- for crypto -->
+	<script src="/static/components/googlecode/sha1.js"></script>
+	<script src="/static/components/googlecode/sha256.js"></script>
+	<!-- for crypto, asn1, asn1x509 -->
+	<script src="/static/components/yahoo/yahoo-min.js"></script>
+
+	<script language="JavaScript" type="text/javascript" src="/static/ext/jsbn.js"></script>
+	<script language="JavaScript" type="text/javascript" src="/static/ext/jsbn2.js"></script>
+	<script language="JavaScript" type="text/javascript" src="/static/ext/prng4.js"></script>
+	<script language="JavaScript" type="text/javascript" src="/static/ext/rng.js"></script>
+	<script language="JavaScript" type="text/javascript" src="/static/ext/rsa.js"></script>
+	<script language="JavaScript" type="text/javascript" src="/static/ext/rsa2.js"></script>
+	<script language="JavaScript" type="text/javascript" src="/static/ext/base64.js"></script>
+	<script language="JavaScript" type="text/javascript" src="/static/asn1hex-1.1.js"></script>
+	<script language="JavaScript" type="text/javascript" src="/static/rsapem-1.1.js"></script>
+	<script language="JavaScript" type="text/javascript" src="/static/rsasign-1.2.js"></script>
+	<script language="JavaScript" type="text/javascript" src="/static/x509-1.1.js"></script>
+	<script language="JavaScript" type="text/javascript" src="/static/pkcs5pkey-1.0.js"></script>
+	<script language="JavaScript" type="text/javascript" src="/static/asn1-1.0.js"></script>
+	<script language="JavaScript" type="text/javascript" src="/static/asn1x509-1.0.js"></script>
+	<script language="JavaScript" type="text/javascript" src="/static/components/sm2/crypto-1.1.js"></script>
+
+	<script language="JavaScript" type="text/javascript" src="/static/ext/ec.js"></script>
+	<script language="JavaScript" type="text/javascript" src="/static/ext/ec-patch.js"></script>
+	<script language="JavaScript" type="text/javascript" src="/static/ecdsa-modified-1.0.js"></script>
+	<script language="JavaScript" type="text/javascript" src="/static/components/sm2/sm3.js"></script>
+	<script language="JavaScript" type="text/javascript" src="/static/components/sm2/sm3-sm2-1.0.js"></script>
+	<script language="JavaScript" type="text/javascript" src="/static/components/sm2/ecparam-1.0.js"></script>
+	<script language="JavaScript" type="text/javascript" src="/static/components/sm2/sm2.js"></script>
+
 <style type="text/css">
+
+
+
+	.sweet-alert p {
+		font-size: 10px;
+	}
+
+	.pager li>a, .pager li>span {
+		padding: 0px 12px;
+	}
+
+	.list-group-item {
+		top: 20px;
+	width: 588px;
+		color: black;
+	}
+
 
 	*{
 		color: #93E1EB;
@@ -115,8 +174,8 @@ document.getElementById("content").className="content4";
 class="selectspan1">查询</span></a></li>
 <li role="presentation" id="tag2"><a href="#" onclick="switchTag('tag2','content2');this.blur();"><span>更新</span></a></li>
 <li role="presentation" id="tag3"><a href="#" onclick="switchTag('tag3','content3');this.blur();"><span>删除</span></a></li>
-<li role="presentation" id="tag4"><a href="#" onclick="switchTag('tag4','content4');this.blur();"><span>？？备用</span></a></li>
-<li role="presentation" id="tag5"><a href="#" onclick=window.location.href="index.html"><span>退出</span></a></li>
+<li role="presentation" id="tag4"><a href="#" onclick="switchTag('tag4','content4');this.blur();"><span>身份认证</span></a></li>
+<li role="presentation" id="tag5"><a href="#" onclick=window.location.href="/pki/denglu"><span>退出</span></a></li>
 </ul>
 </div>
 <div id="content" class="content4">
@@ -124,48 +183,292 @@ class="selectspan1">查询</span></a></li>
 
 	<div class="col-lg-6">
 		<div class="input-group">
-			<input type="text" class="form-control" placeholder="请输入要查询的ID">
+			<input type="text" class="form-control" placeholder="请输入要查询的ID" style="width: 533px;" id="chaid">
       <span class="input-group-btn">
-        <button class="btn btn-default" type="button">查询</button>
+        <button class="btn btn-default" type="button" id="chaxun">查询</button>
       </span>
-		</div><!-- /input-group -->
+		</div>
+		<!-- /input-group -->
+
+
+		<ul class="list-group" id="chaxunul">
+
+			<!--<li class="list-group-item">{{ result.id }}<textarea style="width:215px; height: 42px; margin-top: 10px; ">{{ result.pd }}</textarea></li>-->
+<!--{#			<li class="list-group-item">CN.bj.haidian.SBX:  <textarea style="width:215px; height: 42px; margin-top: 10px; ">e4c40ff5051c503b32dca475a7263130f2e6e2049832231f31a62b608963183e8495c08e43f403e72b545bb2708f72df71edbe935f6007a51180ca7234ca0745</textarea></li>#}-->
+<!--{#			<li class="list-group-item">CN.bj.Daly.EE14328：  <textarea style="width:215px; height: 42px; margin-top: 10px; ">b627b863e8e8212912165af5515a4f8fb595365dd73b3a1a6515e36255e59ca238e78b5585e60b0fccbc3eb76f48b42de9498ec635811bc33e6ec0c04b6725a4</textarea></li>#}-->
+
+
+		</ul>
+
+
+
+
+
 	</div><!-- /.col-lg-6 -->
 </div><!-- /.row --></div>
 
 
-<div id="content2" class="hidecontent">2、不同的项目使用不同的颜色来区分</div>
-<div id="content3" class="hidecontent">3、这回需要使用到js了，呵呵</div>
-<div id="content4" class="hidecontent">4、背景图片只需要两个图片文件就足够，减少服务器负担</div>
-<div id="content5" class="hidecontent">5、这是使用到的两个图片：
-<table width="58%" border="1" cellspacing="2" cellpadding="0">
-<tr>
-<td width="70%" align="center"><img src="/texiao/tab_selected_left_bk2.gif" width="250" height="290" /></td>
-<td width="30%" align="center"><img src="/texiao/tab_selected_right_bk2.gif" width="15" height="290" /></td>
-</tr>
-</table>
+<div id="content2" class="hidecontent">
+
+
+	<div class="col-lg-6">
+		<div class="input-group">
+			<!--<input type="text" class="form-control" placeholder="请输入要更新的ID" style="width: 513px; margin-top: 60px">-->
+            <input type="text" class="form-control" placeholder="id" style="width: 513px;  margin-top: 20px" id="gengxinid">
+			<input type="text" class="form-control" placeholder="更新前公钥信息" style="width: 513px;  margin-top: 20px" id="gengxinqian">
+			<input type="text" class="form-control" placeholder="更新后公钥信息" style="width: 513px;  margin-top: 20px" id="gengxinhou">
+
+		</div><!-- /input-group -->
+		<div class='login_fields__submit'>
+			<input type='button' value='更新'  class='login_fields__zhuce_shibx' style="margin-left: 159px;margin-top: 30px" id="gengxin">
+
+
+
+
+		</div>
+	</div>
 </div>
-</div>
+<div id="content3" class="hidecontent">
+
+	<div class='login_fields'>
+		<div class='login_fields__user'>
+			<div class='icon'>
+				<img alt="" src='img/user_icon_copy.png'>
+			</div>
+			<input name="login" placeholder='ID' maxlength="50" type='text' autocomplete="off" style="width: 500px" id="shanchuid"/>
+
+		</div>
+
+		<div class='login_fields__user'>
+			<div class='icon'>
+				<a onclick="window.location.href=(changeURLArg('/pki/jiami/','id',$('.id').val()))" ><img alt="" src='/static/img/lock_icon_copy.png' style="cursor:pointer;" title="SM2算法"></a>
+			</div>
+			<input type="text"    placeholder="签名"  style="width: 500px" id="shanchuqianmin">
+
+		</div>
+
+		<div class='login_fields__submit'>
+
+
+			<input type='button' value='删除' class='login_fields__zhuce_shibx' style="margin-left: 240px" id="shanchu">
+		</div>
+
 </div>
 </div>
 
+
+
+	<div id="content4" class="hidecontent">
+
+
+		<div class="col-lg-6">
+			<div class="input-group">
+				<!--<input type="text" class="form-control" placeholder="请输入要更新的ID" style="width: 513px; margin-top: 60px">-->
+				<input type="text" class="form-control" placeholder="id" style="width: 513px;  margin-top: 20px" id="renzhengid">
+				<a onclick="window.location.href=(changeURLArg('/pki/jiami/','id',$('.id').val()))" ><img alt="" src='/static/img/lock_icon_copy.png' style="cursor:pointer;" title="SM2算法"></a>
+				<input type="text" class="form-control" placeholder="认证公钥信息" style="width: 513px;  margin-top: 20px" id="renzhenggongyao">
+
+			</div><!-- /input-group -->
+			<div class='login_fields__submit'>
+				<input type='button' value='身份认证'  class='login_fields__zhuce_shibx' style="margin-left: 159px;margin-top: 30px" id="renzheng">
+
+
+
+
+			</div>
+		</div>
+	</div>
+
+        <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src='/static/js/stopExecutionOnTimeout.js?t=1'></script>
+<script type="text/javascript" src="/static/layui/layui.js"></script>
+<script type="text/javascript" src="/static/js/particleground.js"></script>
+<script type="text/javascript" src="/static/js/treatment.js"></script>
+<script type="text/javascript" src="/static/js/jquery.mockjax.js"></script>
+
+
+
+	<!--加密-->
+	<script>
+		function doCrypt(info,pubkey) {
+			var curve = "sm2";
+			var msg = info;
+			var msgData = CryptoJS.enc.Utf8.parse(msg);
+
+			var pubkeyHex = pubkey;
+			if (pubkeyHex.length > 64 * 2) {
+				pubkeyHex = pubkeyHex.substr(pubkeyHex.length - 64 * 2);
+			}
+
+			var xHex = pubkeyHex.substr(0, 64);
+			var yHex = pubkeyHex.substr(64);
+
+			var cipherMode = 1;
+
+			var cipher = new SM2Cipher(cipherMode);
+			var userKey = cipher.CreatePoint(xHex, yHex);
+
+			msgData = cipher.GetWords(msgData.toString());
+
+			var encryptData = cipher.Encrypt(userKey, msgData);
+			return encryptData;
+		}
+
+	</script>
+
+<!--crc-->
+	<script>
+
+		(function() {
+			var table = "00000000 77073096 EE0E612C 990951BA 076DC419 706AF48F E963A535 9E6495A3 0EDB8832 79DCB8A4 E0D5E91E 97D2D988 09B64C2B 7EB17CBD E7B82D07 90BF1D91 1DB71064 6AB020F2 F3B97148 84BE41DE 1ADAD47D 6DDDE4EB F4D4B551 83D385C7 136C9856 646BA8C0 FD62F97A 8A65C9EC 14015C4F 63066CD9 FA0F3D63 8D080DF5 3B6E20C8 4C69105E D56041E4 A2677172 3C03E4D1 4B04D447 D20D85FD A50AB56B 35B5A8FA 42B2986C DBBBC9D6 ACBCF940 32D86CE3 45DF5C75 DCD60DCF ABD13D59 26D930AC 51DE003A C8D75180 BFD06116 21B4F4B5 56B3C423 CFBA9599 B8BDA50F 2802B89E 5F058808 C60CD9B2 B10BE924 2F6F7C87 58684C11 C1611DAB B6662D3D 76DC4190 01DB7106 98D220BC EFD5102A 71B18589 06B6B51F 9FBFE4A5 E8B8D433 7807C9A2 0F00F934 9609A88E E10E9818 7F6A0DBB 086D3D2D 91646C97 E6635C01 6B6B51F4 1C6C6162 856530D8 F262004E 6C0695ED 1B01A57B 8208F4C1 F50FC457 65B0D9C6 12B7E950 8BBEB8EA FCB9887C 62DD1DDF 15DA2D49 8CD37CF3 FBD44C65 4DB26158 3AB551CE A3BC0074 D4BB30E2 4ADFA541 3DD895D7 A4D1C46D D3D6F4FB 4369E96A 346ED9FC AD678846 DA60B8D0 44042D73 33031DE5 AA0A4C5F DD0D7CC9 5005713C 270241AA BE0B1010 C90C2086 5768B525 206F85B3 B966D409 CE61E49F 5EDEF90E 29D9C998 B0D09822 C7D7A8B4 59B33D17 2EB40D81 B7BD5C3B C0BA6CAD EDB88320 9ABFB3B6 03B6E20C 74B1D29A EAD54739 9DD277AF 04DB2615 73DC1683 E3630B12 94643B84 0D6D6A3E 7A6A5AA8 E40ECF0B 9309FF9D 0A00AE27 7D079EB1 F00F9344 8708A3D2 1E01F268 6906C2FE F762575D 806567CB 196C3671 6E6B06E7 FED41B76 89D32BE0 10DA7A5A 67DD4ACC F9B9DF6F 8EBEEFF9 17B7BE43 60B08ED5 D6D6A3E8 A1D1937E 38D8C2C4 4FDFF252 D1BB67F1 A6BC5767 3FB506DD 48B2364B D80D2BDA AF0A1B4C 36034AF6 41047A60 DF60EFC3 A867DF55 316E8EEF 4669BE79 CB61B38C BC66831A 256FD2A0 5268E236 CC0C7795 BB0B4703 220216B9 5505262F C5BA3BBE B2BD0B28 2BB45A92 5CB36A04 C2D7FFA7 B5D0CF31 2CD99E8B 5BDEAE1D 9B64C2B0 EC63F226 756AA39C 026D930A 9C0906A9 EB0E363F 72076785 05005713 95BF4A82 E2B87A14 7BB12BAE 0CB61B38 92D28E9B E5D5BE0D 7CDCEFB7 0BDBDF21 86D3D2D4 F1D4E242 68DDB3F8 1FDA836E 81BE16CD F6B9265B 6FB077E1 18B74777 88085AE6 FF0F6A70 66063BCA 11010B5C 8F659EFF F862AE69 616BFFD3 166CCF45 A00AE278 D70DD2EE 4E048354 3903B3C2 A7672661 D06016F7 4969474D 3E6E77DB AED16A4A D9D65ADC 40DF0B66 37D83BF0 A9BCAE53 DEBB9EC5 47B2CF7F 30B5FFE9 BDBDF21C CABAC28A 53B39330 24B4A3A6 BAD03605 CDD70693 54DE5729 23D967BF B3667A2E C4614AB8 5D681B02 2A6F2B94 B40BBE37 C30C8EA1 5A05DF1B 2D02EF8D";
+			/* Number */
+			crc32 = function( /* String */ str, /* Number */ crc ) {
+				if( crc == window.undefined ) crc = 0;
+				var n = 0; //a number between 0 and 255
+				var x = 0; //an hex number
+				crc = crc ^ (-1);
+				for( var i = 0, iTop = str.length; i < iTop; i++ ) {
+					n = ( crc ^ str.charCodeAt( i ) ) & 0xFF;
+					x = "0x" + table.substr( n * 9, 8 );
+					crc = ( crc >>> 8 ) ^ x;
+				}
+				return (crc ^ (-1))>>>0;
+			};
+		})();
+
+
+</script>
+
+		<!--查询-->
+		<script>
+		$('#chaxun').click(function () {
+		var username = $('#chaid').val();
+		var input = {username: username,"opType":"3","pContent":username,"sContent":doCrypt(username,"b3eb369e2344ada6"),"checkSum":crc32(username).toString(16)};
+			swal("成功向服务器发送！", "opType: " +3 +"\t\n"+ "pContent: " +username+"\t\n" +"sContent: " +doCrypt(username,"b3eb369e2344ada6") +"\t\n"+"checkSum: " +crc32(username).toString(16));
+		$.ajax({
+		type: "post",
+		data: input,
+		url: "/pki/cha_user/",
+		cache: false,
+		success: function (ret) {
+
+//		alert(ret);//返回了查询到的用户对象，要把对象的用户名和公钥信息展示出来ret.username | ret.password
+
+//			var array = ["CN.bj.haidian.SBX:","1111","CN.bj.haidian.SBX:","1111"];
+			for (var i = 0; i < ret.length; i=i+2) {
+				var li = document.createElement('li');
+				li.setAttribute("class", "list-group-item");
+				li.innerHTML = ret[i];
+				document.getElementById("chaxunul").appendChild(li);
+
+				var textarea = document.createElement('textarea');
+				textarea.setAttribute("style", "width:215px; height: 42px; margin-top: 10px; ");
+				textarea.innerHTML = ret[i + 1];
+				li.appendChild(textarea);
+			}
+		},
+		error: function () {
+		alert("false");
+		},
+		})
+
+		})
+
+      //更新
+
+		$('#gengxin').click(function () {
+		    var username=$('#gengxinid').val();
+			var password = $('#gengxinqian').val();
+			var password_1 = $('#gengxinhou').val();
+			var input = {username:username,password: password ,password_1:password_1,"opType":"4","pContent":username,"sContent":doCrypt(username,"b3eb369e2344ada6"),"checkSum":crc32(username).toString(16)};
+			swal("成功向服务器发送！", "opType: " +4 +"\t\n"+ "pContent: " +username+"\t\n" +"sContent: " +doCrypt(username,"b3eb369e2344ada6") +"\t\n"+"checkSum: " +crc32(username).toString(16));
+			$.ajax({
+				type: "post",
+				data: input,
+				url: "/pki/upd_user/",
+				cache: false,
+				success: function (ret) {
+
+					alert(ret.status);
+
+				},
+				error: function () {
+					alert("false");
+				},
+			})
+
+		})
+
+
+//			删除
+
+		$('#shanchu').click(function () {
+			var username= $('#shanchuid').val();
+			var password = $('#shanchuqianmin').val();
+
+
+			var input = {username:username,password: password,"opType":"5","pContent":username,"sContent":doCrypt(username,"b3eb369e2344ada6"),"checkSum":crc32(username).toString(16)};
+			swal("成功向服务器发送！", "opType: " +5 +"\t\n"+ "pContent: " +username+"\t\n" +"sContent: " +doCrypt(username,"b3eb369e2344ada6") +"\t\n"+"checkSum: " +crc32(username).toString(16));
+			$.ajax({
+				type: "post",
+				data: input,
+				url: "/pki/del_user/",
+				cache: false,
+				success: function (ret) {
+
+					alert(ret.status);
+
+				},
+				error: function () {
+					alert("false");
+				},
+			})
+
+		})
+
+
+
+		//			认证
+
+		$('#renzheng').click(function () {
+			var username= $('#renzhengid').val();
+			var password = $('#renzhenggongyao').val();
+
+
+			var input = {username:username,password: password,"opType":"6","pContent":username,"sContent":doCrypt(username,"b3eb369e2344ada6"),"checkSum":crc32(username).toString(16)};
+			swal("成功向服务器发送！", "opType: " +6 +"\t\n"+ "pContent: " +username+"\t\n" +"sContent: " +doCrypt(username,"b3eb369e2344ada6") +"\t\n"+"checkSum: " +crc32(username).toString(16));
+			$.ajax({
+				type: "post",
+				data: input,
+				url: "/pki/renzheng_user/",
+//				后台没有url
+				cache: false,
+				success: function (ret) {
+
+					alert(ret.status);
+
+				},
+				error: function () {
+					alert("false");
+				},
+			})
+
+		})
+
+
+		</script>
 
 
 
 <!--<link type="text/css" rel="stylesheet" href="layui/css/layui.css" />-->
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/jquery-ui.min.js"></script>
-<script type="text/javascript" src='js/stopExecutionOnTimeout.js?t=1'></script>
-<script type="text/javascript" src="layui/layui.js"></script>
-<script type="text/javascript" src="js/particleground.js"></script>
-<script type="text/javascript" src="js/treatment.js"></script>
-<script type="text/javascript" src="js/jquery.mockjax.js"></script>
 
 
 
-		<script type="text/javascript" src="img/ThreeWebGL.js"></script>
-		<script type="text/javascript" src="img/ThreeExtras.js"></script>
-		<script type="text/javascript" src="img/Detector.js"></script>
-		<script type="text/javascript" src="img/RequestAnimationFrame.js"></script>
+		<script type="text/javascript" src="/static/img/ThreeWebGL.js"></script>
+		<script type="text/javascript" src="/static/img/ThreeExtras.js"></script>
+		<script type="text/javascript" src="/static/img/Detector.js"></script>
+		<script type="text/javascript" src="/static/img/RequestAnimationFrame.js"></script>
 		<script id="vs" type="x-shader/x-vertex">
 			varying vec2 vUv; void main() { vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 ); }
 		</script>
@@ -281,6 +584,8 @@ class="selectspan1">查询</span></a></li>
 				renderer.render(scene, camera)
 			}
 		</script>
-	</body>
+    </div>
+</div>
+</body>
 
 </html>
