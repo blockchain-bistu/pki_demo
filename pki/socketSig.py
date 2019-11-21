@@ -9,7 +9,7 @@
  
 
 import socket
-from pki import sm2
+# from pki import sm2
 def socketClientA():
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind(('localhost', 12345))  # 绑定要监听的端口

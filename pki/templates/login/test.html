@@ -368,6 +368,12 @@ class="selectspan1">查询</span></a></li>
 //		alert(ret);//返回了查询到的用户对象，要把对象的用户名和公钥信息展示出来ret.username | ret.password
 
 //			var array = ["CN.bj.haidian.SBX:","1111","CN.bj.haidian.SBX:","1111"];
+                    var div = document.getElementById("chaxunul");
+                    while(div.hasChildNodes()) //当div下还存在子节点时 循环继续
+
+                    {
+                       div.removeChild(div.firstChild);
+                    }
 					for (var i = 0; i < ret.length; i=i+2) {
 						var li = document.createElement('li');
 						li.setAttribute("class", "list-group-item");

@@ -222,7 +222,7 @@ def Verify(Sign, E, PA, len_para=64, Hexstr=0, encoding='utf-8'):
     :param encoding: 编码格式
     :return:
     """
-    if type(Sign) != bytes:
+    if type(Sign) == str:
         Sign = bytes.fromhex(Sign)
 
 
