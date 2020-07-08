@@ -18,6 +18,9 @@ import json
 from django.views.decorators.csrf import csrf_exempt
 from .models import UserInfo
 import random
+
+from .write_usrinfo import write_usrinfo
+
 con = get_redis_connection()
 
 R = SRT_G.RadixTree()
@@ -158,7 +161,7 @@ def zhuce(request):
 
 
 @csrf_exempt
-@login_required
+#@login_required
 def cha_user(request):
     if request.method == "POST":
 
@@ -255,7 +258,7 @@ def del_user(request):
         return render(request, 'login/test.html')
 
 @csrf_exempt
-@login_required
+#@login_required
 def upd_user(request):
     if request.method == "POST":
         n_1 = {'status': '更新成功！'}
@@ -331,7 +334,7 @@ def jiami(request):
 
 @csrf_exempt
 @login_required
-def userVerify(request):
+def renzheng_user(request):
     if request.method == "POST":
         userID = request.POST.get('username', None)
         sigNature = request.POST.get('password', None)
@@ -357,4 +360,41 @@ def userVerify(request):
             return HttpResponse(json.dumps(sigValid), content_type='application/json')
     return render(request, 'login/test.html')
 
+def DownLoad(request):
+    """
+        API文档下载
+    :param request:
+    :return:
+    """
+    write_usrinfo()
+    if request.method == "GET":
+        file = open('static/document/main_pki_userinfo.csv', 'rb')
+        response = HttpResponse(file)
+        response['Content-Type'] = 'application/octet-stream'  # 设置头信息，告诉浏览器这是个文件
+        response['Content-Disposition'] = 'attachment;filename="main_pki_userinfo.csv"'
+        return response
 
+def usr_sign(request):
+    if request.method == "POST":
+        userID = request.POST.get('username', None)
+        privateKey = request.POST.get('prvkey', None)
+        print("privatekey: ", privateKey)
+        sig = sm2.Sign(userID, privateKey, '12345678abcdef', 64)
+        print("sig: ", sig.hex())
+        password=sig.hex()
+        #return HttpResponse(json.dumps(password), content_type='application/json')
+        return password
+    return render(request, 'login/index.html')
+
+def usr_keypair(request):
+    if request.method == "POST":
+        keypair=sm2.generate_keypair
+        print("pubkey: ", keypair[0].hex())
+        print("prvkey: ", keypair[1].hex())
+        pubkey=keypair[0].hex()
+        prvkey=keypair[1].hex()
+        #keys=[pubkey,prvkey]
+        #return HttpResponse(json.dumps(keys), content_type='application/json')
+        return pubkey,prvkey
+
+    return render(request, 'login/index.html')

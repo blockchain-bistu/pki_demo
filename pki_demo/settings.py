@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pki',
+    'werkzeug_debugger_runserver',#cyy
+    'django_extensions',#cyy
 ]
 
 MIDDLEWARE = [
@@ -51,7 +53,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'pki_demo.urls'
-
+LOGIN_URL = '/pki/denglu/'  #登陆地址cyy
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -150,3 +152,4 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 #cyy
+#MEDIA_ROOT = 'static/document/'#cyy2020

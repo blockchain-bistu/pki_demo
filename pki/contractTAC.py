@@ -31,7 +31,7 @@ def getID(addr):
     tx_hash = contract.functions.getID().transact()
     tx_receipt = web3.eth.waitForTransactionReceipt(tx_hash)
     if tx_receipt:
-        return contract.functions.getID().call()
+        return True
     return False
 
 
@@ -43,7 +43,7 @@ def getPubkey(addr):
 
     print("tx_receipt",tx_receipt)
     if tx_receipt:
-        return contract.functions.getPubkey().call()
+        return True
     return False
 
 
@@ -65,7 +65,7 @@ def updatePubkey(addr, pubkey):
     tx_hash = contract.functions.updatePubkey(pubkey).transact()
     tx_receipt = web3.eth.waitForTransactionReceipt(tx_hash)
     if tx_receipt:
-        return contract.functions.updatePubkey(pubkey).call()
+        return True
     return False
 
 
@@ -75,7 +75,7 @@ def updateID(addr, id):
     tx_hash = contract.functions.updateID(id).transact()
     tx_receipt = web3.eth.waitForTransactionReceipt(tx_hash)
     if tx_receipt:
-        return contract.functions.updateID(id).call()
+        return True
     return False
 
 

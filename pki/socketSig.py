@@ -12,7 +12,7 @@ import socket
 # from pki import sm2
 def socketClientA():
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server.bind(('localhost', 12345))  # 绑定要监听的端口
+    server.bind(('localhost', 6799))  # 绑定要监听的端口
     server.listen(5)  # 开始监听 表示可以使用五个链接排队
     while True:  # conn就是客户端链接过来而在服务端为期生成的一个链接实例
         conn, addr = server.accept()  # 等待链接,多个链接的时候就会出现问题,其实返回了两个值
@@ -31,7 +31,7 @@ def socketClientA():
 
 def socketClientB():
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # 声明socket类型，同时生成链接对象
-    client.connect(('localhost', 12345))  # 建立一个链接，连接到本地的6969端口
+    client.connect(('localhost', 6799))  # 建立一个链接，连接到本地的6969端口
 
     while True:
 

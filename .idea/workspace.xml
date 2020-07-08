@@ -2,12 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e15df553-c97b-4521-8429-ce0b08d8c2f1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cert.crt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cert.key" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pki/check_login.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pki/db.sqlite3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pki/ipfs_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pki/write_usrinfo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server.crt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server.key" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/document/main_pki_userinfo.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/document/usrinfo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/pki_demo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/pki_demo.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pki/sm2.py" beforeDir="false" afterPath="$PROJECT_DIR$/pki/sm2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki/TEST" beforeDir="false" afterPath="$PROJECT_DIR$/pki/TEST" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki/contractTAC.py" beforeDir="false" afterPath="$PROJECT_DIR$/pki/contractTAC.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/pki/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pki/socketSig.py" beforeDir="false" afterPath="$PROJECT_DIR$/pki/socketSig.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki/templates/backup/test的副本.html" beforeDir="false" afterPath="$PROJECT_DIR$/pki/templates/backup/test的副本.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki/templates/backup/test的副本2.html" beforeDir="false" afterPath="$PROJECT_DIR$/pki/templates/backup/test的副本2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki/templates/backup/test的副本3.html" beforeDir="false" afterPath="$PROJECT_DIR$/pki/templates/backup/test的副本3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki/templates/backup/test的副本4.html" beforeDir="false" afterPath="$PROJECT_DIR$/pki/templates/backup/test的副本4.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki/templates/login/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/pki/templates/login/test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki/templates/zsgc/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/pki/templates/zsgc/test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/pki/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki_demo/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/pki_demo/settings.py" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,23 +74,14 @@
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="main: schema" type="981a47c2:SqliteImplModel$Schema" />
       </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="Django default" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="main: schema" type="981a47c2:SqliteImplModel$Schema" />
-        <item name="pki_userinfo: table" type="3d80ac25:SqliteImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="Django default" type="feb32156:DbDataSourceImpl" />
-        <item name="collations" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
     </expand>
     <select />
   </component>
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="pki_demo" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -89,19 +106,29 @@
       <facet id="pki_demo/invalid/Django" />
     </ignored-facets>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1680" />
-    <option name="height" value="1050" />
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
   </component>
   <component name="ProjectId" id="1SBMTz3YR45PshVMpeUX91hqOcE" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
+    <property name="ToolWindowPython Console.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/static/document" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -111,20 +138,8 @@
       <recent name="$PROJECT_DIR$/pki" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="Python.socketClient">
-    <configuration name="accessProtocol" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.debug_plus">
+    <configuration name="123" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="pki_demo" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -137,9 +152,97 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pki/accessProtocol.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pki/123.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="debug" type="PythonConfigurationType" factoryName="Python">
+      <module name="pki_demo" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="D:\应用\python\Python3.7.0\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage.py" />
+      <option name="PARAMETERS" value="runserver" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="debug_plus" type="PythonConfigurationType" factoryName="Python">
+      <module name="pki_demo" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="D:\应用\python\Python3.7.0\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage.py" />
+      <option name="PARAMETERS" value="runserver_plus --cert cert.crt 127.0.0.1:800000" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ipfs_test" type="PythonConfigurationType" factoryName="Python">
+      <module name="pki_demo" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pki" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pki/ipfs_test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="manage" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="pki_demo" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="D:\mysoftware\chen\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
@@ -168,7 +271,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="socketClient" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="views" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="pki_demo" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -181,7 +284,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pki/socketClient.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pki/views.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -190,7 +293,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="socketSig" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="write_usrinfo" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="pki_demo" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -203,29 +306,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pki/socketSig.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="pki_demo" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pki" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pki/test.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pki/write_usrinfo.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -240,8 +321,9 @@
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="pki_demo.settings" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="D:\应用\python\Python3.7.0\python.exe" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -257,24 +339,37 @@
       <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Django server.pki_demo" />
+      <item itemvalue="Python.debug_plus" />
+      <item itemvalue="Python.debug" />
+      <item itemvalue="Python.ipfs_test" />
+      <item itemvalue="Python.manage" />
+      <item itemvalue="Python.sm2" />
+      <item itemvalue="Python.views" />
+      <item itemvalue="Python.123" />
+      <item itemvalue="Python.write_usrinfo" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.socketClient" />
-        <item itemvalue="Python.socketSig" />
+        <item itemvalue="Python.write_usrinfo" />
+        <item itemvalue="Python.views" />
+        <item itemvalue="Python.manage" />
+        <item itemvalue="Python.123" />
         <item itemvalue="Python.sm2" />
-        <item itemvalue="Python.accessProtocol" />
-        <item itemvalue="Python.test" />
       </list>
     </recent_temporary>
   </component>
   <component name="ServiceViewManager">
-    <option name="allServicesViewState">
-      <serviceView>
-        <treeState>
-          <expand />
-          <select />
-        </treeState>
-      </serviceView>
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
     </option>
   </component>
   <component name="SvnConfiguration">
@@ -315,7 +410,36 @@
       <workItem from="1574238935780" duration="516000" />
       <workItem from="1574239726565" duration="334000" />
       <workItem from="1574243582510" duration="642000" />
-      <workItem from="1574313764505" duration="4773000" />
+      <workItem from="1574313764505" duration="5855000" />
+      <workItem from="1574472222267" duration="1112000" />
+      <workItem from="1575615407021" duration="877000" />
+      <workItem from="1575616834363" duration="12000" />
+      <workItem from="1578039689503" duration="396000" />
+      <workItem from="1579424298097" duration="1660000" />
+      <workItem from="1582163526059" duration="345000" />
+      <workItem from="1587614892095" duration="597000" />
+      <workItem from="1587879023204" duration="371000" />
+      <workItem from="1587951317307" duration="9000" />
+      <workItem from="1592812994959" duration="1386000" />
+      <workItem from="1592814732954" duration="4585000" />
+      <workItem from="1592819600812" duration="648000" />
+      <workItem from="1592823188984" duration="1959000" />
+      <workItem from="1592826010371" duration="811000" />
+      <workItem from="1592832256467" duration="4780000" />
+      <workItem from="1593343961876" duration="1446000" />
+      <workItem from="1593353499927" duration="3604000" />
+      <workItem from="1593400038873" duration="26613000" />
+      <workItem from="1593483759715" duration="1455000" />
+      <workItem from="1593502178518" duration="1511000" />
+      <workItem from="1593504667160" duration="21759000" />
+      <workItem from="1593535069065" duration="3073000" />
+      <workItem from="1593591866706" duration="20149000" />
+      <workItem from="1593616079272" duration="4070000" />
+      <workItem from="1593673946797" duration="17747000" />
+      <workItem from="1593758428197" duration="20412000" />
+      <workItem from="1593843743394" duration="4370000" />
+      <workItem from="1593950991517" duration="664000" />
+      <workItem from="1593952486847" duration="1247000" />
     </task>
     <task id="LOCAL-00001" summary="添加了，介入协议，crc，以及radix tree">
       <created>1570950434809</created>
@@ -380,7 +504,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574319581722</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="最终成品">
+      <created>1574320632980</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1574320632980</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -409,19 +540,105 @@
     <MESSAGE value="最终成品" />
     <option name="LAST_COMMIT_MESSAGE" value="最终成品" />
   </component>
+  <component name="WindowStateProjectService">
+    <state x="361" y="71" key="#SQL_Dialects" timestamp="1593683802603">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="71" key="#SQL_Dialects/0.0.1536.824@0.0.1536.824" timestamp="1593683802603" />
+    <state x="4" y="85" width="902" height="689" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1593692748634">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="4" y="85" width="902" height="689" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1593692748634" />
+    <state x="514" y="215" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1593758772473">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="514" y="215" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1593758772473" />
+    <state x="155" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1593613354282">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="155" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1593613354282" />
+    <state x="548" y="167" key="FileChooserDialogImpl" timestamp="1593695938344">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="548" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1593695938344" />
+    <state width="1493" height="255" key="GridCell.Tab.0.bottom" timestamp="1593869410876">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="255" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1593869410876" />
+    <state width="1493" height="255" key="GridCell.Tab.0.center" timestamp="1593869410876">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="255" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1593869410876" />
+    <state width="1493" height="255" key="GridCell.Tab.0.left" timestamp="1593869410876">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="255" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1593869410876" />
+    <state width="1493" height="255" key="GridCell.Tab.0.right" timestamp="1593869410876">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="255" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1593869410876" />
+    <state width="1493" height="255" key="GridCell.Tab.1.bottom" timestamp="1593869410876">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="255" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1593869410876" />
+    <state width="1493" height="255" key="GridCell.Tab.1.center" timestamp="1593869410876">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="255" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1593869410876" />
+    <state width="1493" height="255" key="GridCell.Tab.1.left" timestamp="1593869410876">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="255" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1593869410876" />
+    <state width="1493" height="255" key="GridCell.Tab.1.right" timestamp="1593869410876">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="255" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1593869410876" />
+    <state x="530" y="134" key="RollbackChangesDialog" timestamp="1593846870432">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="530" y="134" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1593846870432" />
+    <state x="270" y="54" key="SettingsEditor" timestamp="1592813054087">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="270" y="54" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1592813054087" />
+    <state x="439" y="246" key="com.intellij.ide.util.TipDialog" timestamp="1593952494590">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="439" y="246" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1593952494590" />
+    <state x="480" y="314" key="com.intellij.ide.util.TipDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1587951318123" />
+    <state x="321" y="148" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1593676515637">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="321" y="148" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1536.824@0.0.1536.824" timestamp="1593676515637" />
+    <state x="440" y="0" width="782" height="824" key="find.popup" timestamp="1593605708084">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="440" y="0" width="782" height="824" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1593605708084" />
+    <state x="842" y="171" width="672" height="678" key="search.everywhere.popup" timestamp="1593765519574">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="842" y="171" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1593765519574" />
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/pki_demo$contract.coverage" NAME="contract Coverage Results" MODIFIED="1573991648284" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pki" />
-    <SUITE FILE_PATH="coverage/pki_demo$SRT_G.coverage" NAME="SRT_G Coverage Results" MODIFIED="1573808112756" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pki" />
-    <SUITE FILE_PATH="coverage/pki_demo$sm2.coverage" NAME="sm2 Coverage Results" MODIFIED="1574317857341" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pki" />
-    <SUITE FILE_PATH="coverage/pki_demo$socketClient.coverage" NAME="socketClient Coverage Results" MODIFIED="1574318890711" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pki" />
-    <SUITE FILE_PATH="coverage/pki_demo$timeSM2.coverage" NAME="timeSM2 Coverage Results" MODIFIED="1571368761801" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pki" />
-    <SUITE FILE_PATH="coverage/pki_demo$Unittests_for_testsm2_MyTestCase_test_Sign_run.coverage" NAME="Unittests for testsm2.MyTestCase.test_Sign_run Coverage Results" MODIFIED="1571367527902" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pki" />
-    <SUITE FILE_PATH="coverage/pki_demo$Unittests_in_testsm2_py.coverage" NAME="Unittests in testsm2.py Coverage Results" MODIFIED="1571368375842" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pki" />
-    <SUITE FILE_PATH="coverage/pki_demo$accessProtocol.coverage" NAME="accessProtocol Coverage Results" MODIFIED="1574144607157" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pki" />
+    <SUITE FILE_PATH="coverage/pki_demo$123.coverage" NAME="123 Coverage Results" MODIFIED="1593530825443" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pki" />
+    <SUITE FILE_PATH="coverage/pki_demo$sm2.coverage" NAME="sm2 Coverage Results" MODIFIED="1593435851748" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pki" />
     <SUITE FILE_PATH="coverage/pki_demo$Unittests_for_testsm2_MyTestCase.coverage" NAME="Unittests for testsm2.MyTestCase Coverage Results" MODIFIED="1571367660468" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pki" />
-    <SUITE FILE_PATH="coverage/pki_demo$socketSig.coverage" NAME="socketSig Coverage Results" MODIFIED="1574318885756" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pki" />
+    <SUITE FILE_PATH="coverage/pki_demo$debug_plus.coverage" NAME="debug_plus Coverage Results" MODIFIED="1593846917698" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pki_demo$crc.coverage" NAME="crc Coverage Results" MODIFIED="1573886780673" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pki" />
-    <SUITE FILE_PATH="coverage/pki_demo$Unittests_for_testsm2_MyTestCase_test_Encrypt_run.coverage" NAME="Unittests for testsm2.MyTestCase.test_Encrypt_run Coverage Results" MODIFIED="1571367953582" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pki" />
+    <SUITE FILE_PATH="coverage/pki_demo$timeSM2.coverage" NAME="timeSM2 Coverage Results" MODIFIED="1571368761801" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pki" />
+    <SUITE FILE_PATH="coverage/pki_demo$debug.coverage" NAME="debug Coverage Results" MODIFIED="1593603841715" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pki_demo$socketSig.coverage" NAME="socketSig Coverage Results" MODIFIED="1574472330184" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pki" />
+    <SUITE FILE_PATH="coverage/pki_demo$Unittests_for_testsm2_MyTestCase_test_Sign_run.coverage" NAME="Unittests for testsm2.MyTestCase.test_Sign_run Coverage Results" MODIFIED="1571367527902" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pki" />
+    <SUITE FILE_PATH="coverage/pki_demo$ipfs_test.coverage" NAME="ipfs_test Coverage Results" MODIFIED="1575616047360" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pki" />
+    <SUITE FILE_PATH="coverage/pki_demo$manage.coverage" NAME="manage Coverage Results" MODIFIED="1593531346640" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pki_demo$views.coverage" NAME="views Coverage Results" MODIFIED="1593675758447" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pki" />
+    <SUITE FILE_PATH="coverage/pki_demo$accessProtocol.coverage" NAME="accessProtocol Coverage Results" MODIFIED="1574144607157" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pki" />
+    <SUITE FILE_PATH="coverage/pki_demo$socketClient.coverage" NAME="socketClient Coverage Results" MODIFIED="1574472335355" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pki" />
     <SUITE FILE_PATH="coverage/pki_demo$test.coverage" NAME="test Coverage Results" MODIFIED="1574142186213" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pki" />
+    <SUITE FILE_PATH="coverage/pki_demo$SRT_G.coverage" NAME="SRT_G Coverage Results" MODIFIED="1573808112756" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pki" />
+    <SUITE FILE_PATH="coverage/pki_demo$Unittests_in_testsm2_py.coverage" NAME="Unittests in testsm2.py Coverage Results" MODIFIED="1571368375842" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pki" />
+    <SUITE FILE_PATH="coverage/pki_demo$Unittests_for_testsm2_MyTestCase_test_Encrypt_run.coverage" NAME="Unittests for testsm2.MyTestCase.test_Encrypt_run Coverage Results" MODIFIED="1571367953582" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pki" />
+    <SUITE FILE_PATH="coverage/pki_demo$write_usrinfo.coverage" NAME="write_usrinfo Coverage Results" MODIFIED="1593698523386" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pki" />
   </component>
 </project>
